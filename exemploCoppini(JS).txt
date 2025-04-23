@@ -1,0 +1,159 @@
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>JS</title>
+  <!-- Estilo da página -->
+  <style>
+    body {
+      background-color: rgb(242, 236, 190);
+      margin: 0;
+    }
+
+    /* Títulos */
+    h1,
+    h3 {
+      color: rgb(154, 59, 59);
+      text-align: center;
+      margin-bottom: 25px;
+    }
+
+    h1 {
+      font-size: 50px;
+      margin-top: 150px;
+    }
+
+    h3 {
+      font-size: 30px;
+    }
+
+    /* Container geral onde os pratos ficarão */
+    .container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 50px;
+      max-width: 1200px;
+      margin: 50px auto;
+    }
+
+    /* Estilo do card (caixinha) de cada prato */
+    .card {
+      display: flex;
+      background-color: rgb(226, 199, 153);
+      border-radius: 8px;
+      padding: 10px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      text-decoration: none;
+      color: black;
+      width: 470px;
+      height: 180px;
+    }
+
+    /* Estilo da imagem dentro do card */
+    .card img {
+      width: 150px;
+      height: 150px;
+      border-radius: 5px;
+      margin-top: 15px;
+    }
+
+    /* Informações do prato (texto) */
+    .info {
+      margin-left: 15px;
+      width: 300px;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Título principal da página -->
+  <h1>Percorrendo array com JavaScript</h1>
+  <h1>Pratos Principais</h1>
+
+  <!-- Onde os cards dos pratos serão colocados -->
+  <div class="container" id="pratosContainer"></div>
+
+  <script>
+    // Aqui estamos criando uma lista com todos os pratos principais
+    // Cada prato é um objeto com nome, preço, imagem e resumo
+    const pratoPrincipal = [
+      {
+        nome: 'Coq au Vin',
+        preco: 'R$ 198,00',
+        imagem: 'pratoPrincipal1.jfif',
+        resumo: 'Frango cozido em vinho tinto com cogumelos, cebolas pequenas e bacon. Servido com batatas ou arroz.'
+      },
+      {
+        nome: 'Boeuf Bourguignon',
+        preco: 'R$ 280,00',
+        imagem: 'pratoPrincipal2.jfif',
+        resumo: 'Carne de boi cozida lentamente em vinho tinto, com cenouras, cogumelos, cebolas e batatas, servida com purê de batatas.'
+      },
+      {
+        nome: 'Bouillabaisse',
+        preco: 'R$ 220,00',
+        imagem: 'pratoPrincipal3.jfif',
+        resumo: 'Sopa tradicional de peixe e frutos do mar, com açafrão, ervas e legumes. Servida com torradas e molho rouille.'
+      },
+      {
+        nome: 'Confit de Canard',
+        preco: 'R$ 250,00',
+        imagem: 'pratoPrincipal4.jfif',
+        resumo: 'Pato confitado em sua própria gordura, servido com batatas douradas e molho de laranja.'
+      },
+      {
+        nome: 'Chateaubriand',
+        preco: 'R$ 450,00',
+        imagem: 'pratoPrincipal5.jfif',
+        resumo: 'Corte nobre de carne bovina grelhado, servido com molho béarnaise, batatas gratinadas e vegetais da estação.'
+      },
+      {
+        nome: 'Ratatouille',
+        preco: 'R$ 128,00',
+        imagem: 'pratoPrincipal6.jfif',
+        resumo: 'Refogado de legumes (berinjela, abobrinha, pimentão, tomate e cebola) cozidos com azeite e ervas finas.'
+      },
+      {
+        nome: 'Sole Meunière',
+        preco: 'R$ 280,00',
+        imagem: 'pratoPrincipal7.jfif',
+        resumo: 'Linguado frito com manteiga, limão e salsinha, acompanhado de arroz ou batatas fritas.'
+      },
+      {
+        nome: 'Tartiflette',
+        preco: 'R$ 160,00',
+        imagem: 'pratoPrincipal8.jfif',
+        resumo: 'Prato gratinado de batatas com queijo reblochon, bacon e cebolas, típico dos Alpes franceses.'
+      }
+    ];
+    // Percorre cada item (prato) no array pratoPrincipal
+    pratoPrincipal.forEach(function (prato) {
+
+      // Cria uma nova div que será o card para o prato
+      const card = document.createElement('div');
+
+      // Atribui a classe 'card' à nova div para aplicar o estilo
+      card.className = 'card';
+
+      // Preenche o conteúdo do card com as informações do prato (nome, resumo, preço e imagem)
+      card.innerHTML = `
+    <div class="info">
+      <h3>${prato.nome}</h3>   <!-- Nome do prato -->
+      <p>${prato.resumo}</p>    <!-- Resumo do prato -->
+      <b class="preco">${prato.preco}</b> <!-- Preço do prato -->
+    </div>
+    <div class="img">
+      <img src="./imagem/${prato.imagem}" alt="${prato.nome}">  <!-- Imagem do prato -->
+    </div>
+  `;
+
+      // Adiciona o card (div) com as informações dentro do elemento com id 'pratosContainer'
+      document.getElementById('pratosContainer').appendChild(card);
+    });
+
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,146 @@
+<?php
+// Este é o array que armazena as informações de todos os pratos: nome, preço, imagem e resumo.
+$pratoPrincipal = [
+    // Cada item do array principal representa um prato diferente, com suas respectivas informações.
+    /*[0]*/[
+        'nome' => 'Coq au Vin',
+        // Para acessar essa informação: $pratoPrincipal[0]['nome'] → retorna "Coq au Vin"
+        'preco' => 'R$ 198,00',
+        'imagem' => 'pratoPrincipal1.jfif',
+        'resumo' => 'Frango cozido em vinho tinto com cogumelos, cebolas pequenas e bacon. Servido com batatas ou arroz.'
+        // Em arrays do PHP, o último item pode ter ou não uma vírgula. Ambos funcionam.
+    ],
+     /*[1]*/[
+        'nome' => 'Boeuf Bourguignon',
+        'preco' => 'R$ 280,00',
+        'imagem' => 'pratoPrincipal2.jfif',
+        'resumo' => 'Carne de boi cozida lentamente em vinho tinto, com cenouras, cogumelos, cebolas e batatas, servida com purê de batatas.'
+    ],
+     /*[2]*/[
+        'nome' => 'Bouillabaisse',
+        'preco' => 'R$ 220,00',
+        'imagem' => 'pratoPrincipal3.jfif',
+        'resumo' => 'Sopa tradicional de peixe e frutos do mar, com açafrão, ervas e legumes. Servida com torradas e molho rouille.'
+    ],
+    // ⬇ Para acessar o nome deste prato: $pratoPrincipal[3]['nome']
+    [
+        'nome' => 'Confit de Canard',
+        'preco' => 'R$ 250,00',
+        'imagem' => 'pratoPrincipal4.jfif',
+        'resumo' => 'Pato confitado em sua própria gordura, servido com batatas douradas e molho de laranja.'
+    ],
+    [
+        'nome' => 'Chateaubriand',
+        'preco' => 'R$ 450,00',
+        'imagem' => 'pratoPrincipal5.jfif',
+        'resumo' => 'Corte nobre de carne bovina grelhado, servido com molho béarnaise, batatas gratinadas e vegetais da estação.'
+    ],
+    [
+        'nome' => 'Ratatouille',
+        'preco' => 'R$ 128,00',
+        'imagem' => 'pratoPrincipal6.jfif',
+        'resumo' => 'Refogado de legumes (berinjela, abobrinha, pimentão, tomate e cebola) cozidos com azeite e ervas finas.'
+    ],
+    [
+        'nome' => 'Sole Meunière',
+        'preco' => 'R$ 280,00',
+        'imagem' => 'pratoPrincipal7.jfif',
+        'resumo' => 'Linguado frito com manteiga, limão e salsinha, acompanhado de arroz ou batatas fritas.'
+    ],
+    [
+        'nome' => 'Tartiflette',
+        'preco' => 'R$ 160,00',
+        'imagem' => 'pratoPrincipal8.jfif',
+        'resumo' => 'Prato gratinado de batatas com queijo reblochon, bacon e cebolas, típico dos Alpes franceses.'
+    ]
+];
+?>
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PHP</title>
+    <style>
+        body {
+            background-color: rgb(242, 236, 190);
+            margin: 0;
+        }
+
+        h1,
+        h3 {
+            color: rgb(154, 59, 59);
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        h1 {
+            font-size: 50px;
+            margin-top: 150px;
+        }
+
+        h3 {
+            font-size: 30px;
+        }
+
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 50px;
+            max-width: 1200px;
+            margin: 50px auto;
+        }
+
+        .card {
+            display: flex;
+            background-color: rgb(226, 199, 153);
+            border-radius: 8px;
+            padding: 10px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            text-decoration: none;
+            color: black;
+            width: 470px;
+            height: 180px;
+        }
+
+        .card img {
+            width: 150px;
+            height: 150px;
+            border-radius: 5px;
+            margin-top: 15px;
+        }
+
+        .info {
+            margin-left: 15px;
+            width: 300px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Percorrendo array com PHP</h1>
+    <h1>Pratos Principais</h1>
+    <div class="container">
+        <?php
+        // foreach percorre todos os itens do array e gera um card para cada prato
+        foreach ($pratoPrincipal as $prato /*simplificando o nome*/) {
+            echo '
+                <div class="card">
+                    <div class="info">
+                        <h3>' . $prato['nome'] . '</h3>
+                        <p>' . $prato['resumo'] . '</p>
+                        <b class="preco">' . $prato['preco'] . '</b>
+                    </div>
+                    <div class="img">
+                        <img src="./imagem/' . $prato['imagem'] . '" alt="' . $prato['nome'] . '">
+                    </div>
+                </div>
+            ';
+        }
+        ?>
+    </div>
+</body>
+
+</html>
